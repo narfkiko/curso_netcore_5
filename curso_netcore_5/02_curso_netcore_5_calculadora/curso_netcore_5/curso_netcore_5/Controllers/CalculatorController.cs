@@ -19,7 +19,7 @@ namespace curso_netcore_5.Controllers
         }
 
         [HttpGet("sum/{firstNumber}/{seconfNumber}") ]
-        public IActionResult Get(string firstNumber, string seconfNumber)
+        public IActionResult Sum(string firstNumber, string seconfNumber)
         {
 
             if (IsNumeric(firstNumber) && IsNumeric(seconfNumber))
@@ -30,6 +30,85 @@ namespace curso_netcore_5.Controllers
 
             }
 
+            return BadRequest("inalid input");
+
+        }
+
+        [HttpGet("subtraction/{firstNumber}/{seconfNumber}")]
+        public IActionResult Subtraction(string firstNumber, string seconfNumber)
+        {
+
+            if (IsNumeric(firstNumber) && IsNumeric(seconfNumber))
+            {
+
+                var sum = ConverttoDecimal(firstNumber) - ConverttoDecimal(seconfNumber);
+                return Ok(sum.ToString());
+
+            }
+
+            return BadRequest("inalid input");
+
+        }
+
+        [HttpGet("multiplication/{firstNumber}/{seconfNumber}")]
+        public IActionResult Multiplication(string firstNumber, string seconfNumber)
+        {
+
+            if (IsNumeric(firstNumber) && IsNumeric(seconfNumber))
+            {
+
+                var sum = ConverttoDecimal(firstNumber) * ConverttoDecimal(seconfNumber);
+                return Ok(sum.ToString());
+
+            }
+
+            return BadRequest("inalid input");
+
+        }
+
+        [HttpGet("division/{firstNumber}/{seconfNumber}")]
+        public IActionResult Division(string firstNumber, string seconfNumber)
+        {
+
+            if (IsNumeric(firstNumber) && IsNumeric(seconfNumber))
+            {
+
+                var sum = ConverttoDecimal(firstNumber) / ConverttoDecimal(seconfNumber);
+                return Ok(sum.ToString());
+
+            }
+
+            return BadRequest("inalid input");
+
+        }
+
+        [HttpGet("mean/{firstNumber}/{seconfNumber}")]
+        public IActionResult Mean(string firstNumber, string seconfNumber)
+        {
+
+            if (IsNumeric(firstNumber) && IsNumeric(seconfNumber))
+            {
+
+                var sum = (ConverttoDecimal(firstNumber) + ConverttoDecimal(seconfNumber)) /2;
+                return Ok(sum.ToString());
+
+            }
+
+            return BadRequest("inalid input");
+
+        }
+
+        [HttpGet("square-root/{firstNumber}")]
+        public IActionResult Squareroot(string firstNumber)
+        {
+
+            if (IsNumeric(firstNumber))
+            {
+
+                var squareroot = Math.Sqrt((double)ConverttoDecimal(firstNumber));
+                return Ok(squareroot.ToString());
+
+            }
 
             return BadRequest("inalid input");
 
